@@ -6,13 +6,10 @@
 
 import React, { useEffect, memo } from 'react';
 import PropTypes from 'prop-types';
-import { Helmet } from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { createStructuredSelector } from 'reselect';
-import ExcelReader from '../ExcelReader/ExcelReader';
-
 import { useInjectReducer } from 'utils/injectReducer';
 import { useInjectSaga } from 'utils/injectSaga';
 import {
@@ -22,6 +19,7 @@ import {
 } from 'containers/App/selectors';
 import H2 from 'components/H2';
 import ReposList from 'components/ReposList';
+import { Banner1, Banner2 } from '../Banners';
 import AtPrefix from './AtPrefix';
 import CenteredSection from './CenteredSection';
 import Form from './Form';
@@ -60,22 +58,7 @@ export function HomePage({
 
   return (
     <article>
-      <Helmet>
-        <title>Home Page</title>
-        <meta
-          name="description"
-          content="A React.js Boilerplate application homepage"
-        />
-      </Helmet>
       <div>
-        <CenteredSection>
-          <H2>
-            <FormattedMessage {...messages.startProjectHeader} />
-          </H2>
-          <p>
-            <FormattedMessage {...messages.startProjectMessage} />
-          </p>
-        </CenteredSection>
         <Section>
           <H2>
             <FormattedMessage {...messages.trymeHeader} />
@@ -98,7 +81,8 @@ export function HomePage({
           <ReposList {...reposListProps} />
         </Section>
       </div>
-      <ExcelReader/>
+      <Banner1 color={'red'} />
+      <Banner2 />
     </article>
   );
 }
